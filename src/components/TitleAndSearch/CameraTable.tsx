@@ -13,19 +13,17 @@ const CameraTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(10);
   const itemsPerPageOptions = [5, 10, 20, 50];
-  const token = '4ApVMIn5sTxeW7GQ5VWeWiy';
 
-  // const externaltoken = process.env.REACT_APP_TOKEN; 
-  // const externalapiUrl = process.env.REACT_APP_API_URL; 
-  // console.log(externalapiUrl,externaltoken);
+  const externaltoken = import.meta.env.VITE_TOKEN; 
+  const externalapiUrl = import.meta.env.VITE_API_URL; 
 
   useEffect(() => {
     const fetchCameras = async () => {
       try {
-        const response = await fetch('https://api-app-staging.wobot.ai/app/v1/fetch/cameras', {
+        const response = await fetch(`${externalapiUrl}/fetch/cameras`, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${externaltoken}`,
             'Content-Type': 'application/json',
           },
         });
@@ -120,10 +118,10 @@ const CameraTable: React.FC = () => {
               onStatusToggle={async () => {
                 const newStatus = camera.status === 'Active' ? 'Inactive' : 'Active';
                 try {
-                  const response = await fetch('https://api-app-staging.wobot.ai/app/v1/update/camera/status', {
+                  const response = await fetch(`${externalapiUrl}/update/camera/status`, {
                     method: 'POST',
                     headers: {
-                      'Authorization': `Bearer ${token}`,
+                      'Authorization': `Bearer ${externaltoken}`,
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ id: camera.id, status: newStatus }),
