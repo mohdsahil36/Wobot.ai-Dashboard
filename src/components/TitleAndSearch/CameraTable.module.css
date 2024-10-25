@@ -1,0 +1,86 @@
+.header,.search{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.camerasTitle{
+  color: #212121;
+  margin: 0 0 0.75rem 0;
+  font-family: Inter,'sans-serif';
+  font-weight: 500;
+}
+.camerasDesc{
+  color: #545454;
+  margin: 0;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+.searchBar{
+  outline: none;
+  font-size: 0.875rem;
+  border: none;
+  background-color: #F3F3F3;
+  color: #A0A0A0;
+  font-weight: 400;
+}
+.search-bar{
+  max-width: 15rem;
+  max-height: 2.5rem;
+  padding:0.75rem 0.875rem;
+  background-color: #F3F3F3;
+  border: 1px solid #F0F0F0;
+  border-radius: 6px;
+}
+.searchIcon{
+  color: #545454;
+  height: 1rem;
+}
+
+/*table styling*/
+.cameraTable{
+  margin-top: 0.25rem;
+  width: 100%;
+}
+.tableHeading{
+  margin-bottom: 0.5rem;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+.tableHeadingtitles{
+  text-transform: uppercase;
+  color: #545454;
+  font-weight: 400;
+  font-size: 0.825rem;
+
+}
+th{
+  font-weight: 500;
+  padding: 0.875rem 0.25rem;
+}
+.cameraBody{
+  background-color: #FFFFFF;
+}
+.status,.actions{
+  text-align: center ;
+}
+
+/*pagination*/
+.pagination{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  column-gap: 0.75rem;
+  color: #545454;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.pagination button{
+  font-size: 0.75rem;
+  border: none;
+  background: none;
+}
+.pageSelect{
+  border: none;
+  color: #545454;
+  padding: 0.25rem;
+}

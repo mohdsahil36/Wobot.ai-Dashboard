@@ -1,0 +1,31 @@
+.filters{
+    margin-top: 1rem;
+    padding: 0.25rem 0.75rem;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    display: flex;
+    justify-content: start;
+    column-gap: 0.5rem;
+    align-items: center;
+}
+.location-div,.status-div{
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #CED4DA;
+    border-radius: 4px;
+}
+.locationIcon,.statusIcon{
+    width: 0.875rem;
+}
+.locationSelect,.statusSelect{
+    border: none;
+    outline: none;
+    color: #7E7E7E;
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.locationOptions,.statusoptions{
+    color: #545454;
+}

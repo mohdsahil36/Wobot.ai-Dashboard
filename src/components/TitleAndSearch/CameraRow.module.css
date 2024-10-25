@@ -1,0 +1,37 @@
+.camera-row{
+    height: 4rem;
+}
+td{
+    color: #545454;
+    font-weight: 400;
+    font-size: 0.875rem;
+}
+.status,.actions{
+    text-align: center ;
+}
+.deleteIcon:hover{
+    background-color: #F0F0F0;
+    color:white;
+    padding: 0.25rem;
+    border-radius: 5px;
+}
+.active{
+    border-radius: 2px;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background-color: #0292621A;
+    text-align: center;
+    color: #029262;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+.inactive{
+    border-radius: 2px;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background-color: #F0F0F0;
+    text-align: center;
+    color: #545454;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
