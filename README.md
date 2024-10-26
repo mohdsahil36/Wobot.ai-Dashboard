@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Wobot.AI Dashboard
 
-Currently, two official plugins are available:
+This implementation represents a refined camera management dashboard for Wobot.AI, designed to allow users to view all available cameras along with relevant details. It includes features for filtering cameras by location and status, enabling efficient searching and removing cameras from the list as needed. Additionally, pagination is implemented to support streamlined data navigation across multiple pages.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Data Retrieval: Implement data fetching through an authorization bearer token.
+- Search Functionality: Integrate a robust search feature to enhance user experience.
+- Dynamic Filtering: Enable dynamic filtering of data based on location and status.
+- User Interface Design: Develop a user-friendly interface to facilitate effective data visualization.
+- Pagination: Incorporate pagination for streamlined data navigation
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+
+Clone the project
+
+```bash
+  git clone https://github.com/mohdsahil36/Wobot.ai-Dashboard
+  cd Wobot.ai-Dashboard
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Navigate to the sc folder
+```bash
+  cd src
 ```
+
+Install node modules
+```bash
+  npm install
+```
+
+Run the server
+```bash
+  npm run dev
+```
+    
