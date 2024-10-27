@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Filters.module.css';
-import LocationIcon from '../../assets/Location.svg';
-import StatusIcon from '../../assets/WifiIcon.svg';
+import LocationIcon from '../../../assets/Location.svg';
+import StatusIcon from '../../../assets/WifiIcon.svg';
 
 interface FiltersProps {
   selectedLocation: string;

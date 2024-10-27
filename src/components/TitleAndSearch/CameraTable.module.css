@@ -65,7 +65,7 @@ th{
 }
 
 /*pagination*/
-.pagination{
+/* .pagination{
   display: flex;
   align-items: center;
   justify-content: end;
@@ -83,4 +83,4 @@ th{
   border: none;
   color: #545454;
   padding: 0.25rem;
-}
+} */

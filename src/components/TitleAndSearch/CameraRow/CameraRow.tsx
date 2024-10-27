@@ -1,7 +1,7 @@
 import React from 'react';
-import { Camera } from './types';
+import { Camera } from '../types';
 import styles from './CameraRow.module.css';
-import CancelIcon from '../../assets/not-interested.svg';
+import CancelIcon from '../../../assets/not-interested.svg';
 
 interface CameraRowProps {
   camera: Camera;

@@ -1,10 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import styles from './CameraTable.module.css';
 import { Camera, CameraResponse } from './types';
-import Filters from './Filters';
-import CameraRow from './CameraRow';
+import Filters from './Filters/Filters';
+import CameraRow from './CameraRow/CameraRow';
 import SearchIcon from '../../assets/SearchIcon.svg';
-import Pagination from './Pagination';
+import Pagination from './Pagination/Pagination';
+
+const externaltoken = import.meta.env.VITE_TOKEN; 
+const externalapiUrl = import.meta.env.VITE_API_URL;
+
+const updateCameraStatus = async (cameraId: string, newStatus: string) => {
+  try {
+    const response = await fetch(`${externalapiUrl}/update/camera/status`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${externaltoken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: cameraId, status: newStatus }),
+    });
+
+    if (!response.ok) throw new Error('Failed to update status');
+    return newStatus;
+  } catch (error) {
+    console.error('Error updating status:', error);
+    throw new Error('Could not update status');
+  }
+};
+
 const CameraTable: React.FC = () => {
   const [cameras, setCameras] = useState<Camera[]>([]);
   const [locations, setLocations] = useState<string[]>([]);
@@ -13,9 +36,6 @@ const CameraTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(10);
   const itemsPerPageOptions = [5, 10, 20, 50];
-
-  const externaltoken = import.meta.env.VITE_TOKEN; 
-  const externalapiUrl = import.meta.env.VITE_API_URL; 
 
   useEffect(() => {
     const fetchCameras = async () => {
@@ -69,6 +89,20 @@ const CameraTable: React.FC = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleStatusToggle = async (cameraId: string, currentStatus: string) => {
+    const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
+    try {
+      await updateCameraStatus(cameraId, newStatus);
+      setCameras(prevCameras => 
+        prevCameras.map(c => 
+          c._id === cameraId ? { ...c, status: newStatus } : c
+        )
+      );
+    } catch {
+      setError('Could not update status');
+    }
+  };
+
   return (
     <div className={styles.cameraContainer}>
       <div className={styles.header}>
@@ -115,30 +149,7 @@ const CameraTable: React.FC = () => {
             <CameraRow 
               key={camera._id} 
               camera={camera} 
-              onStatusToggle={async () => {
-                const newStatus = camera.status === 'Active' ? 'Inactive' : 'Active';
-                try {
-                  const response = await fetch(`${externalapiUrl}/update/camera/status`, {
-                    method: 'POST',
-                    headers: {
-                      'Authorization': `Bearer ${externaltoken}`,
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ id: camera.id, status: newStatus }),
-                  });
-
-                  if (!response.ok) throw new Error('Failed to update status');
-
-                  setCameras(prevCameras => 
-                    prevCameras.map(c => 
-                      c._id === camera._id ? { ...c, status: newStatus } : c
-                    )
-                  );
-                } catch (error) {
-                  console.error('Error updating status:', error);
-                  setError('Could not update status');
-                }
-              }} 
+              onStatusToggle={() => handleStatusToggle(camera._id, camera.status)}
               onDelete={(cameraId) => setCameras(cameras.filter(camera => camera._id !== cameraId))} 
             />
           ))}

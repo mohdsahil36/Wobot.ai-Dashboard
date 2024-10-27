@@ -1,10 +1,10 @@
 // Pagination.tsx
 import React from 'react';
-import styles from './CameraTable.module.css';
-import ArrowLeft from '../../assets/arrow left.svg';
-import ArrowLeftLeft from '../../assets/arrow left-left.svg';
-import ArrowRight from '../../assets/arrow right.svg';
-import ArrowRightRight from '../../assets/arrow right-right.svg';
+import styles from './Pagination.module.css';
+import ArrowLeft from '../../../assets/arrow left.svg';
+import ArrowLeftLeft from '../../../assets/arrow left-left.svg';
+import ArrowRight from '../../../assets/arrow right.svg';
+import ArrowRightRight from '../../../assets/arrow right-right.svg';
 
 type PaginationProps = {
   itemsPerPage: number;
