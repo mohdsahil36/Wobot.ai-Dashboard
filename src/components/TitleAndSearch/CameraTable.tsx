@@ -9,10 +9,10 @@ import Pagination from './Pagination/Pagination';
 const externaltoken = import.meta.env.VITE_TOKEN; 
 const externalapiUrl = import.meta.env.VITE_API_URL;
 
-const updateCameraStatus = async (cameraId: string, newStatus: string) => {
+const updateCameraStatus = async (cameraId: number, newStatus: string) => {
   try {
     const response = await fetch(`${externalapiUrl}/update/camera/status`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Authorization': `Bearer ${externaltoken}`,
         'Content-Type': 'application/json',
@@ -27,6 +27,7 @@ const updateCameraStatus = async (cameraId: string, newStatus: string) => {
     throw new Error('Could not update status');
   }
 };
+
 
 const CameraTable: React.FC = () => {
   const [cameras, setCameras] = useState<Camera[]>([]);
@@ -87,21 +88,23 @@ const CameraTable: React.FC = () => {
     if (pageNumber < 1) return;
     if (pageNumber > totalPages) return;
     setCurrentPage(pageNumber);
-  };
+  };  
 
   const handleStatusToggle = async (cameraId: string, currentStatus: string) => {
     const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
     try {
-      await updateCameraStatus(cameraId, newStatus);
-      setCameras(prevCameras => 
-        prevCameras.map(c => 
-          c._id === cameraId ? { ...c, status: newStatus } : c
-        )
-      );
+        // Convert cameraId to number
+        const numericCameraId = Number(cameraId);
+        await updateCameraStatus(numericCameraId, newStatus);
+        setCameras(prevCameras => 
+            prevCameras.map(c => 
+                c._id === cameraId ? { ...c, status: newStatus } : c
+            )
+        );
     } catch {
-      setError('Could not update status');
+        setError('Could not update status');
     }
-  };
+};
 
   return (
     <div className={styles.cameraContainer}>

@@ -9,11 +9,22 @@ td{
 .status,.actions{
     text-align: center ;
 }
+.deleteButton{
+    border: none;
+    background-color: white;
+}
 .deleteIcon:hover{
     background-color: #F0F0F0;
     color:white;
     padding: 0.25rem;
     border-radius: 5px;
+    border: none;
+}
+.icon{
+    margin-left: 0.5rem;
+}
+.health{
+    margin-left: 0.25rem;
 }
 .active{
     border-radius: 2px;
@@ -34,4 +45,9 @@ td{
     color: #545454;
     font-weight: 500;
     font-size: 0.75rem;
+}
+.healthStatus{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
