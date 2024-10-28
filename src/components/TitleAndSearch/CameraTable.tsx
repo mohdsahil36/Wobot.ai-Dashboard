@@ -94,7 +94,6 @@ const CameraTable: React.FC = () => {
     const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
     console.log(newStatus);
     try {
-        // Convert cameraId to number
         const numericCameraId = Number(cameraId);
         console.log(numericCameraId);
         await updateCameraStatus(numericCameraId, newStatus);

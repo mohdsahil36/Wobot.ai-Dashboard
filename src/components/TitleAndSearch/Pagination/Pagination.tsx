@@ -1,4 +1,3 @@
-// Pagination.tsx
 import React from 'react';
 import styles from './Pagination.module.css';
 import ArrowLeft from '../../../assets/arrow left.svg';
