@@ -6,3 +6,9 @@
     height: 2rem;
     width: 10.164rem;
 }
+
+@media only screen and (max-width: 576px) {
+    .pageLogo{
+        text-align: start;
+    }
+  }
