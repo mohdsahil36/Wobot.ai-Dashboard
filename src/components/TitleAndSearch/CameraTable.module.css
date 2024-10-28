@@ -3,16 +3,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
-@media only screen and (max-width: 576px) {
-  .header {
-    display: block;
-    margin-top: 1rem;
-  }
-  .search-bar{
-    margin-top: 1rem;
-  }
-}
 .camerasTitle{
   color: #212121;
   margin: 0 0 0.75rem 0;
@@ -44,6 +34,16 @@
 .searchIcon{
   color: #545454;
   height: 1rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .header {
+    display: block;
+    margin-top: 1rem;
+  }
+  .search-bar{
+    margin-top: 1rem;
+  }
 }
 
 /*table styling*/
