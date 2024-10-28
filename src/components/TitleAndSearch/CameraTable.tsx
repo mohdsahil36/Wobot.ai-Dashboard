@@ -92,13 +92,15 @@ const CameraTable: React.FC = () => {
 
   const handleStatusToggle = async (cameraId: string, currentStatus: string) => {
     const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
+    console.log(newStatus);
     try {
         // Convert cameraId to number
         const numericCameraId = Number(cameraId);
+        console.log(numericCameraId);
         await updateCameraStatus(numericCameraId, newStatus);
         setCameras(prevCameras => 
             prevCameras.map(c => 
-                c._id === cameraId ? { ...c, status: newStatus } : c
+                c.id === cameraId ? { ...c, status: newStatus } : c
             )
         );
     } catch {
@@ -152,7 +154,7 @@ const CameraTable: React.FC = () => {
             <CameraRow 
               key={camera._id} 
               camera={camera} 
-              onStatusToggle={() => handleStatusToggle(camera._id, camera.status)}
+              onStatusToggle={() => handleStatusToggle(camera.id, camera.status)}
               onDelete={(cameraId) => setCameras(cameras.filter(camera => camera._id !== cameraId))} 
             />
           ))}
